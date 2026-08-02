@@ -18,10 +18,29 @@ os.makedirs(PROCESSED_FOLDER, exist_ok=True)
 
 def predict_with_model(image_path):
 
-    # Temporary result
-    # TensorFlow removed for deployment
+    img = cv2.imread(image_path)
 
-    return "Cavity Detected", 85.0
+    gray = cv2.cvtColor(
+        img,
+        cv2.COLOR_BGR2GRAY
+    )
+
+    mean_value = np.mean(gray)
+
+
+    # Dark region அதிகம் இருந்தால் cavity என்று demo
+    if mean_value < 100:
+
+        status = "Cavity Detected"
+        confidence = 80.0
+
+    else:
+
+        status = "Normal Tooth"
+        confidence = 90.0
+
+
+    return status, confidence
 
 
 
