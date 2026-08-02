@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DentalVision - Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+    <style>
+
+        .result-container{
+            width:90%;
+            margin:auto;
+            padding:40px 0;
+        }
+
+
+        .diagnosis-card{
+
+            background:white;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+            margin-bottom:40px;
+
+            animation:fadeIn 1s;
+
+        }
+
+
+        .diagnosis-card h1{
+
+            color:#0088cc;
+
+        }
+
+
+        .percentage{
+
+            font-size:30px;
+            font-weight:bold;
+            color:#00a896;
+
+        }
+
+
+
+        .processing-title{
+
+            text-align:center;
+            margin-bottom:30px;
+
+        }
+
+
+
+        .processing-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(250px,1fr));
+
+            gap:25px;
+
+        }
+
+
+
+        .process-card{
+
+            background:white;
+
+            padding:20px;
+
+            border-radius:20px;
+
+            box-shadow:
+            0 8px 25px rgba(0,0,0,0.12);
+
+            transition:0.4s;
+
+            text-align:center;
+
+        }
+
+
+
+        .process-card:hover{
+
+            transform:translateY(-10px);
+
+        }
+
+
+
+        .process-card img{
+
+            width:100%;
+
+            height:220px;
+
+            object-fit:contain;
+
+            border-radius:15px;
+
+        }
+
+
+
+        .process-card h3{
+
+            color:#0077b6;
+
+        }
+
+
+
+        .back-btn{
+
+            display:block;
+
+            width:200px;
+
+            margin:40px auto;
+
+            padding:12px;
+
+            text-align:center;
+
+            background:#0096c7;
+
+            color:white;
+
+            border-radius:25px;
+
+            text-decoration:none;
+
+        }
+
+
+
+        @keyframes fadeIn{
+
+            from{
+
+                opacity:0;
+
+                transform:translateY(20px);
+
+            }
+
+            to{
+
+                opacity:1;
+
+                transform:translateY(0);
+
+            }
+
+        }
+
+
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="result-container">
+
+
+
+    <!-- Diagnosis Result -->
+
+
+    <div class="diagnosis-card">
+
+
+        <h1>
+            🦷 AI Diagnosis Report
+        </h1>
+
+
+        <h2>
+            {{ result }}
+        </h2>
+
+
+        <p class="percentage">
+            Confidence : {{percentage}}
+        </p>
+
+
+    </div>
+
+
+
+
+
+    <!-- Processing Steps -->
+
+
+    <h2 class="processing-title">
+        Image Processing Steps
+    </h2>
+
+
+
+    <div class="processing-grid">
+
+
+
+        <div class="process-card">
+
+            <h3>
+                Original X-Ray
+            </h3>
+
+           <img src="/{{ original }}">
+
+{% if result == "Cavity Detected" %}
+<p class="cavity-text">Cavity detected area highlighted</p>
+{% endif %}
+
+            <p>
+                Uploaded dental X-ray image
+            </p>
+
+        </div>
+
+
+
+
+        <div class="process-card">
+
+            <h3>
+                Gray Scale
+            </h3>
+
+
+            <img src="/{{gray}}">
+
+
+            <p>
+                Converted image into grayscale
+                for easier processing
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="process-card">
+
+            <h3>
+                Threshold
+            </h3>
+
+
+            <img src="/{{threshold}}">
+
+
+            <p>
+                Segmentation separates
+                possible cavity regions
+            </p>
+
+
+        </div>
+
+
+
+
+
+        <div class="process-card">
+
+            <h3>
+                Edge Detection
+            </h3>
+
+
+            <img src="/{{edge}}">
+
+
+            <p>
+                Canny edge detection
+                identifies boundaries
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="process-card">
+
+            <h3>
+                Final Detection
+            </h3>
+
+
+            <img src="/{{final}}">
+
+
+            <p>
+                Highlighted possible cavity area
+            </p>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    <a href="/" class="back-btn">
+
+        Analyze Another Image
+
+    </a>
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

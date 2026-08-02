@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <br><br><title>Dental X-Ray Cavity Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            🦷 Dental Vision
+
+        </div>
+
+        <ul>
+
+            <li><a href="#">Home</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#about">About</a></li><br>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- ================= WAVES ================= -->
+
+    <div class="wave"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <h1>
+
+                Dental X-Ray Cavity Detection
+
+            </h1>
+
+            <p>
+
+                This web application detects possible dental cavities
+                from dental X-ray images using advanced Image
+                Processing techniques.
+
+                The uploaded X-ray undergoes Gray Scale Conversion,
+                Thresholding, Edge Detection and Contour Analysis
+                before highlighting the possible cavity region.
+
+                The application provides a clear visualization of
+                every processing stage along with the final
+                diagnosis result.
+
+            </p>
+
+            <a href="#upload">
+
+                <button class="hero-btn">
+
+                    Get Started
+
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+        <div class="hero-right">
+
+            <div class="tooth-container">
+    <img src="{{ url_for('static', filename='images/dental.png') }}" 
+         alt="Dental" 
+         class="tooth-image">
+</div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= UPLOAD ================= -->
+
+    <section id="upload" class="upload-section">
+
+        <div class="upload-card">
+
+            <h2>
+
+                Upload Dental X-Ray Image
+
+            </h2>
+
+            <p>
+
+                Upload a dental X-ray image to begin cavity detection
+                using Image Processing.
+
+            </p>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+
+                <div class="upload-box">
+
+                    <h3>
+
+                        Drag & Drop
+
+                    </h3>
+
+                    <p>
+
+                        or
+
+                    </p>
+
+                    <input
+
+                        type="file"
+
+                        name="image"
+
+                        accept="image/*"
+
+                        required>
+
+                </div>
+
+                <br>
+
+                <button type="submit" class="analyze-btn">
+
+                    Analyze Image
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features">
+
+        <h2>
+
+            Processing Steps
+
+        </h2>
+
+        <div class="feature-grid">
+
+            <div class="card">
+
+                <h3>
+
+                    Gray Scale
+
+                </h3>
+
+                <p>
+
+                    Converts the uploaded image into grayscale
+                    for easier processing.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Threshold
+
+                </h3>
+
+                <p>
+
+                    Segmentation separates cavity regions
+                    from surrounding teeth.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Edge Detection
+
+                </h3>
+
+                <p>
+
+                    Detects boundaries using Canny Edge Detection.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Contour Analysis
+
+                </h3>
+
+                <p>
+
+                    Detects possible cavity regions
+                    from contours.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Final Detection
+
+                </h3>
+
+                <p>
+
+                    Displays highlighted cavity area
+                    with diagnosis.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="about">
+
+        <div class="about-card">
+
+            <h2>About This Project</h2>
+
+            <p>
+
+                This project is developed to identify possible dental
+                cavities from dental X-ray images using Image Processing
+                techniques. The application performs multiple processing
+                stages including grayscale conversion, thresholding,
+                edge detection and contour analysis to visualize
+                potential cavity regions.
+
+            </p>
+
+            <p>
+
+                It provides an easy and interactive way to understand
+                every processing stage while displaying the final
+                diagnosis result in a professional interface.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DEVELOPER ================= -->
+
+    <section class="developer">
+
+        <div class="developer-card">
+
+            <h2>
+
+                Developed By
+
+            </h2>
+
+            <h3>
+
+                Vaitheeswari A
+
+            </h3>
+
+            <p>
+
+                B.Sc Computer Science
+
+            </p>
+
+            <p>
+
+                Image Processing Assignment
+
+            </p>
+
+            <p>
+
+                Dental X-Ray Cavity Detection using Image Processing
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>
+
+            Dental Vision
+
+        </h3>
+
+        <p>
+
+            Dental X-Ray Cavity Detection using Image Processing
+
+        </p>
+    
+<p>
+
+            Made by Vaitheeswari A
+
+        </p>
+        <p>
+
+            © 2026 All Rights Reserved
+
+        </p>
+
+    </footer>
+
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
