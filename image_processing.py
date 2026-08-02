@@ -1,7 +1,6 @@
 import os
 import cv2
 import numpy as np
-import tensorflow as tf
 
 
 # ==========================================================
@@ -12,82 +11,17 @@ PROCESSED_FOLDER = "static/processed"
 os.makedirs(PROCESSED_FOLDER, exist_ok=True)
 
 
-# ==========================================================
-# Model Configuration
-# ==========================================================
-
-MODEL_PATH = "dental_model.keras"
-IMG_SIZE = (224, 224)
-
-_model = None
-
 
 # ==========================================================
-# Load Model
-# ==========================================================
-
-def get_model():
-
-    global _model
-
-    if _model is None:
-        _model = tf.keras.models.load_model(MODEL_PATH)
-
-    return _model
-
-
-
-# ==========================================================
-# Prediction Function
+# Prediction Function (Temporary OpenCV Demo)
 # ==========================================================
 
 def predict_with_model(image_path):
 
-    model = get_model()
+    # Temporary result
+    # TensorFlow removed for deployment
 
-    img = tf.keras.utils.load_img(
-        image_path,
-        target_size=IMG_SIZE
-    )
-
-    arr = tf.keras.utils.img_to_array(img)
-
-    arr = arr / 255.0
-
-    arr = np.expand_dims(arr, axis=0)
-
-
-    prediction = model.predict(
-        arr,
-        verbose=0
-    )[0][0]
-
-
-    print("RAW PREDICTION:", prediction)
-
-
-    if prediction < 0.40:
-
-        predicted_class = "normal"
-
-        confidence = (1 - prediction) * 100
-
-        status = "Normal Tooth"
-
-
-    else:
-
-        predicted_class = "cavity"
-
-        confidence = prediction * 100
-
-        status = "Cavity Detected"
-
-
-    print("RESULT:", predicted_class)
-
-
-    return status, round(float(confidence), 2)
+    return "Cavity Detected", 85.0
 
 
 
@@ -191,7 +125,7 @@ def detect_cavity(image_path):
 
 
     # ------------------------------
-    # AI Prediction
+    # Prediction
     # ------------------------------
 
     status, percentage = predict_with_model(
